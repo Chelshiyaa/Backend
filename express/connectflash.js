@@ -1,12 +1,28 @@
-const express= require('express');
-const app=express();
+const express = require('express');
+const app = express();
+const expressSession = require('express-session');
+const flash = require('connect-flash');
 
-app.get('/',function(req,res){
-    res.send("Hey guys this is home page");
+// Setup session middleware
+app.use(expressSession({
+    secret: "random stuff",
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Use flash middleware 
+app.use(flash());
+
+// Route to set flash message and redirect
+app.get('/', function(req, res, next) {
+    req.flash("error", "Invalid credentials");
+    res.redirect('/error');
 });
 
-app.get('/about',function(req,res){
-    res.send("Hey guys this is about page");
+// Route to display flash message
+app.get('/error', function(req, res, next) {
+    let message = req.flash('error');
+    res.send(message);
 });
 
 app.listen(3000);
