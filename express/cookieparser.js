@@ -1,6 +1,11 @@
-// cookie is like data stored in a browser
-// cookie-parser is a middleware that parses cookies attached to the client request object
-
+// Cookie ek chhoti si information hoti hai jo browser mein store hoti hai. Jaise:
+// User login hai ya nahi?
+// User ne kuch ban kiya hua hai?
+// Preferences (dark mode, language)
+// Lekin:
+// Jab user koi request bhejta hai, wo cookie bhi bhejta hai.
+// Server ko cookie data ko padhne ke liye kuch chahiye hota hai.
+// Isi ka kaam cookie-parser karta hai. Wo request ke saath aayi cookies ko object ke form mein convert kar deta hai.
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
