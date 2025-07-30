@@ -10,8 +10,8 @@ app.get('/',function(req,res){
     res.render('index');
 })
 
-app.get('/check',function(req,res){
-    console.log(req.query);
+app.post('/check',function(req,res){
+    console.log(req.body);
     res.send('working');
 })
 
